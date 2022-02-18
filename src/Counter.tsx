@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 function Counter() {
+
+    const [counter, setCounter] = useState(0);
+
     return (
-        <div>Counter</div>
+        <div className="counter">
+            <input
+                type="number"
+                name="counter"
+                value={counter}
+                readOnly={true}
+            />
+            <button onClick={() => setCounter(counter + 1)}> Increment </button>
+            <button onClick={() => setCounter(0)}> Reset </button>
+        </div>
     )
 }
 

@@ -8,4 +8,7 @@ Create all [7 GUIs](https://eugenkiss.github.io/7guis/tasks) using React+Typescr
 ### The Counter
 
 ### The Temperature Converter
+This works, but if I have the time I'll come back and refactor to using one hook and one changeHandler.
+
+### The Flight Booker
 
