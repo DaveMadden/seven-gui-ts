@@ -35,7 +35,9 @@ function FlightBooker() {
     }, [end, start, error])
 
     useEffect(()=>{ //while the return flight is disabled, make sure its value stays the same as the outbound flight
-        setEnd(start);
+        if(isValidDate(start)&& flightType==='one-way'){
+            setEnd(start);
+        }
     }, [flightType, start])
 
     return (

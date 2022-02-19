@@ -6,11 +6,10 @@ export const Timer = () => {
     const [elapsed, setElapsed] = useState<number>(0)
     
     useEffect(() => { //runs on load: needs to start the timer going
-        console.log("useeffect once on load")
         let id = setInterval(()=>{
             setElapsed(c=> c + 0.1)
         }, 100);
-        return () => clearInterval(id)
+        return () => clearInterval(id) //this is KEY. without it the timer stampedes out of control
     })
 
   return (

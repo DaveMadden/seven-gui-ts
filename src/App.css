@@ -24,3 +24,24 @@
 	display: flex;
 	flex-direction: column;
 }
+.horiz {
+	display: flex;
+	flex-direction: row;
+	padding-top: 10px;
+}
+.leftright {
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid pink;
+}
+.stack {
+	display: flex;
+	flex-direction: column;
+	align-items: right;
+}
+
+.full-width {
+	width: 100%;
+	margin: auto;
+	margin-top: 5px;
+}
