@@ -5,7 +5,7 @@ function Counter() {
     const [counter, setCounter] = useState(0);
 
     return (
-        <div className="counter">
+        <div className="thing">
             <input
                 type="number"
                 name="counter"

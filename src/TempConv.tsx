@@ -22,7 +22,7 @@ function TempConv() {
     }
 
     return (
-        <div className="tempconv">
+        <div className="thing">
             <label htmlFor="temp_c">Celsius</label>
             <input
                 type="number"

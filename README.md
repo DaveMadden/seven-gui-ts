@@ -5,10 +5,14 @@ Create all [7 GUIs](https://eugenkiss.github.io/7guis/tasks) using React+Typescr
 
 ## The GUIs
 
-[X] The Counter
+### The Counter
 
 ### The Temperature Converter
 
 This works, but if I have the time I'll come back and refactor to using one hook and one changeHandler.
 
 ### The Flight Booker
+
+### The Timer!
+
+I got this working, but I would like to revisit this with a custom hook (more flexible) like in [this blog post](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)

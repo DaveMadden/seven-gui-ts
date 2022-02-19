@@ -5,7 +5,7 @@ function FlightBooker() {
 
     const [flightType, setFlightType] = useState("one-way");
     const [start, setStart] = useState(new Date().toISOString().substring(0, 10))
-    const [end, setEnd] = useState(new Date().toISOString().substring(0, 10)) //.toISOString().substring(0, 10)
+    const [end, setEnd] = useState(new Date().toISOString().substring(0, 10))
     const [bookable, setBookable] = useState(true)
     const [error, setError] = useState("")
 
@@ -34,13 +34,13 @@ function FlightBooker() {
         }
     }, [end, start, error])
 
-    useEffect(()=>{
+    useEffect(()=>{ //while the return flight is disabled, make sure its value stays the same as the outbound flight
         setEnd(start);
     }, [flightType, start])
 
     return (
-        <div className="flightbooker">
-            <h1>Flight Booker</h1>
+        <div className="thing">
+            <h3>Flight Booker</h3>
             <select
                 name="flight"
                 onChange={(e) => setFlightType(e.target.value)}
