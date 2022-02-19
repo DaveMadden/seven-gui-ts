@@ -1,6 +1,5 @@
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
-// import type { FormEvent } from 'react';
 
 function FlightBooker() {
 
@@ -18,8 +17,6 @@ function FlightBooker() {
     }
 
     useEffect(() => {
-        // console.log(Date.parse(start), Date.parse(end))
-        // console.log(Date.parse(start) > Date.parse(end))
         if (!isValidDate(end) || !isValidDate(start)) {
             setBookable(false)
             setError("that's not a real date")
@@ -34,7 +31,6 @@ function FlightBooker() {
         else {
             setBookable(true)
             setError("")
-            // console.log("dates", start, end)
         }
     }, [end, start, error])
 
@@ -45,7 +41,6 @@ function FlightBooker() {
     return (
         <div className="flightbooker">
             <h1>Flight Booker</h1>
-            {/* <label>{error}</label> */}
             <select
                 name="flight"
                 onChange={(e) => setFlightType(e.target.value)}
@@ -88,11 +83,7 @@ function FlightBooker() {
                     disabled={flightType === "one-way"}/>
                 )
             }
-            <button
-                disabled={!bookable}
-            >
-                Book
-            </button>
+            <button disabled={!bookable}>Book</button>
         </div>
     )
 }
