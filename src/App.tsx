@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Circles from './Circles';
+import CircleDrawer from './CircleDrawer';
 import Counter from './Counter'
 import CRUD from './CRUD';
 import FlightBooker from './FlightBooker';
@@ -15,7 +15,7 @@ function App() {
       <FlightBooker />
       <Timer />
       <CRUD />
-      <Circles/>
+      <CircleDrawer/>
     </div>
   );
 }
