@@ -32,7 +32,6 @@
 .leftright {
 	padding: 5px;
 	margin: 5px;
-	border: 1px solid pink;
 }
 .stack {
 	display: flex;
@@ -44,4 +43,11 @@
 	width: 100%;
 	margin: auto;
 	margin-top: 5px;
+}
+
+.canvas {
+	background-color: white;
+	border: 1px solid grey;
+	border-radius: 5px;
+	margin: 10px;
 }
