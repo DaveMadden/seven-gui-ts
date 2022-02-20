@@ -35,7 +35,11 @@ const NameList: React.FC<Props> = ({selected, setSelected, people}) => {
       <input type="text" id="filter" value={prefix} onChange={(e)=>setPrefix(e.target.value)}/>
       <select className="full-width" id="list" name="list" size={5} onChange={(e)=>handleSelect(parseInt(e.target.value))}>
         {
-          filtered.map((person) => (
+          filtered.sort(function(a, b) {
+            var textA = a.last.toUpperCase();
+            var textB = b.last.toUpperCase();
+            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+          }).map((person) => (
             <option key={person.id} value={person.id}>{person.last}, {person.first}</option>
           ))
         }
