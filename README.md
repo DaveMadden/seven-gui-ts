@@ -19,4 +19,13 @@ I got this working, but I would like to revisit this with a custom hook (more fl
 
 ### CRUD
 
+UPDATE and DELETE only enabled if a NAME in the NAMELIST is selected.
+
+When a name is selected, it populates the Inputs, where it can be UPDATED or DELETED.
+If text is modified, but CREATE is pressed, will create a new NAME.
+
+At any point, pressing CREATE (as long as the inputs are not empty) takes the content of the Inputs, CREATES a new NAME in the NAMELIST, and deselects (which empties the Inputs.)
+
+The FILTER INPUT filters the array for NAMES that match the text in the FILTER INPUT
+
 ### Circle Drawer
