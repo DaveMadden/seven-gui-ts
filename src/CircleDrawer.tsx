@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import Modal from './Circle_comps/Modal';
 import {Circle} from './Circle_comps/model'
@@ -79,7 +80,7 @@ const CircleDrawer = () => {
     }
   }
   
-  //USEEFFECTS
+  //USE EFFECTS
   useEffect(() => {
     //if the modal is on or there is zero history, don't do these things
     if (showModal || history.length===0) return;
