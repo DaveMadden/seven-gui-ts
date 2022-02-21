@@ -28,13 +28,8 @@ const Modal:React.FC<Props> = ({setShowModal, circleID, circles, setCircles}) =>
         )))
     },[radius])
     
-    
-    
-
-
   return (
     <div className='modal'>
-        <p>Modal for {circleID}</p>
         <input 
             type="range" 
             name="diameter" 

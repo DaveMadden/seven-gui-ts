@@ -20,26 +20,12 @@ const CircleDrawer = () => {
 
   const truncHist = () =>{
     const newHist = history.slice(0,history.length-(histI-1))
-    // console.log(newHist)
     setHistI(1)
-    // setHistory(newHist)
     return newHist;
   }
   
   const addCircle = (x:number, y:number) => {
     let newCircle: Circle = {key:uuidv4(), x:x, y:y, r:20, fill:"white", stroke:"black", opacity:0.3}
-
-    // if (histI>1){
-    //   console.log("not at last point in history, so should truncate")
-    //   let shortHist = truncHist()
-    //   console.log("histI:", histI, " SHORTHIST:", shortHist)
-    //   setHistory(shortHist);
-    // }
-    // ------these lines are now in truncHist()------
-    // const newHist = history.slice(0,history.length-(histI+1))
-    // console.log(newHist)
-    // setHistory(newHist)
-    // setHistI(1)
 
     const newCircles = [...circles, newCircle]
     setCircles(newCircles)
@@ -53,7 +39,6 @@ const CircleDrawer = () => {
 
       const returnedCircles = addCircle(x,y);
       setHistory([...fixedHist, returnedCircles])
-      // setHistory([...history, returnedCircles])
     }else{
       setShowModal(true)
     }
@@ -82,23 +67,17 @@ const CircleDrawer = () => {
   }
 
   const handleUndo = () => {
-    // console.log("undo")
     if (canUndo()){
       setHistI(histI+1)
       setCircles(history[history.length-(histI+1)])
     }
   }
   const handleRedo = () => {
-    // console.log("redo")
     if (canRedo()){
       setHistI(histI-1)
       setCircles(history[history.length-(histI-1)])
     }
   }
-
-  useEffect(()=>{
-    console.log("histI:",histI)
-  }, [histI])
   
   //USEEFFECTS
   useEffect(() => {
@@ -107,9 +86,8 @@ const CircleDrawer = () => {
     handleOff(hoverID)
     //if the modal changed things, update history
     if (getRads(circles)!==getRads(history[history.length-1])){
-      // let shortHist = truncHist() //get truncated history
-      // setHistory([...shortHist, circles])//when modal closed
-      const fixedHist = histI>1 ? truncHist() : history
+      //if we've gone back in history, truncate history array to current position
+      const fixedHist = histI>1 ? truncHist() : history 
       setHistory([...fixedHist, circles])//when modal closed
     }
   }, [showModal])
@@ -146,7 +124,6 @@ const CircleDrawer = () => {
             setCircles={setCircles}
           />
           ):(null)}
-          {/* <Modal/> */}
       <button
         disabled={!canUndo()}
         onClick={()=>handleUndo()}
