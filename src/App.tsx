@@ -10,6 +10,7 @@ import { Timer } from './Timer';
 function App() {
   return (
     <div className="app">
+      <h1>Dave Madden & The Seven GUIs</h1>
       <Counter />
       <TempConv />
       <FlightBooker />
