@@ -1,5 +1,5 @@
 export interface Circle {
-    key:number
+    key:string
     x:number;
     y:number;
     r:number;

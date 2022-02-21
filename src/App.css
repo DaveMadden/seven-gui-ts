@@ -51,6 +51,13 @@
 	border-radius: 5px;
 	margin: 10px;
 }
-.circle :hover {
-	fill: pink;
+.modal {
+	height: 200px;
+	width: 300px;
+	position: relative;
+	top: -300px;
+	left: 50px;
+	background-color: pink;
+	border: 1px solid grey;
+	border-radius: 5px;
 }
