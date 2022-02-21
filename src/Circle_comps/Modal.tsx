@@ -22,8 +22,9 @@ const Modal:React.FC<Props> = ({setShowModal, circleID, circles, setCircles}) =>
     },[circleID, circles])
     
     useEffect(() => {
+        //setting radius in circles (&fill to white so history saves correctly)
         setCircles(circles.map((circle)=> (
-            circle.key===circleID?{...circle, r:radius}:circle
+            circle.key===circleID?{...circle, r:radius, fill:"white"}:circle
         )))
     },[radius])
     
