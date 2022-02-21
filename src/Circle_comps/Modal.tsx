@@ -25,7 +25,7 @@ const Modal:React.FC<Props> = ({setShowModal, circleID, circles, setCircles}) =>
         setCircles(circles.map((circle)=> (
             circle.key===circleID?{...circle, r:radius}:circle
         )))
-    },[radius])//'exhaustive deps' again. will need to refresh this
+    },[radius])
     
     
     

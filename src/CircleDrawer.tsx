@@ -1,5 +1,4 @@
-import { accessSync } from 'fs';
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from './Circle_comps/Modal';
 import {Circle} from './Circle_comps/model'
 const { v4: uuidv4 } = require('uuid');
@@ -11,14 +10,20 @@ const CircleDrawer = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
   const [history, setHistory] = useState<Circle[][]>([])
 
-    const findMouse = (x:number, y:number) => {
+    const handleClick = (x:number, y:number) => {
       if(!hoverID){
-        let newCircle: Circle = {key:uuidv4(), x:x, y:y, r:20, fill:"white", stroke:"black", opacity:0.3}
-        setCircles([...circles, newCircle])
-        setHistory([...history, circles])//when new circle created PUTS EMPTY ARRAY IN WTF
+        const returnedCircles = addCircle(x,y);
+        setHistory([...history, returnedCircles])
       }else{
         setShowModal(true)
       }
+    }
+
+    const addCircle = (x:number, y:number) => {
+      let newCircle: Circle = {key:uuidv4(), x:x, y:y, r:20, fill:"white", stroke:"black", opacity:0.3}
+      const newCircles = [...circles, newCircle]
+      setCircles(newCircles)
+      return newCircles //return this so i can use this to update history vs relying on state to do that because state is for rendering display, not for driving code
     }
 
     const handleOver = (key:string) => {
@@ -35,26 +40,22 @@ const CircleDrawer = () => {
     }
 
     const getRads = (arr:Circle[]) => {
-      let count = 0;
-      for (let i = 0; i< arr.length; i++){
-        count += arr[i].r;
-      }
-      return count;
+      if(arr.length===0)return 0;
+      return arr.reduce((acc, { r }) => acc + r, 0);
     }
-
-    useEffect(()=>{
-      console.log("HISTORY:", history[history.length])
-    },[history])
     
     useEffect(() => {
-      if(!showModal){
-        handleOff(hoverID)
-        //if getRads(circles)!==getRads(history[-1])
-        console.log("GET RADS", getRads(circles))
-        // console.log(history)
+      //if the modal is on or there is zero history, don't do these things
+      if (showModal || history.length===0) return;
+
+      handleOff(hoverID)
+
+      //if the modal changed things, update history
+      if (getRads(circles)!==getRads(history[history.length-1])){ 
         setHistory([...history, circles])//when modal closed
       }
-    }, [showModal]) //this works but linter says it's bad. if i fix the form, however, a bunch of other things fail. will need to wrap handleOff() in useCallback()? More research required, but will table this because it's working.
+  
+    }, [showModal])
 
   return (
     <div className="thing">
@@ -63,7 +64,7 @@ const CircleDrawer = () => {
             className="canvas" 
             width={400} 
             height={400} 
-            onClick={(e)=>findMouse(e.nativeEvent.offsetX, e.nativeEvent.offsetY)}>
+            onClick={(e)=>handleClick(e.nativeEvent.offsetX, e.nativeEvent.offsetY)}>
               {
                 circles.map((circ) =>(
                   <circle
@@ -89,6 +90,8 @@ const CircleDrawer = () => {
           />
           ):(null)}
           {/* <Modal/> */}
+      <button>undo</button>
+      <button>redo</button>
     </div>
   )
 }
